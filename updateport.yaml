@@ -1,0 +1,8 @@
+---
+- hosts: web
+  sudo: yes
+  tasks:
+  - name: update port
+    template: src=template.j2 dest=/etc/httpd/conf/httpd.conf
+  - name: restart httpd
+    service: name=httpd state=restarted

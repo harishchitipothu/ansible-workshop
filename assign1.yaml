@@ -1,0 +1,13 @@
+--- 
+  - hosts: web
+    sudo: yes
+    vars:
+       name: "abc"
+       age: "abc"
+       role: "abc"
+    tasks:
+     - name: print variables
+       debug: msg="Name is {{name}}, Age is {{age}}, Role is {{role}}"     
+     - name: modify httpd script when os family is RedHat
+       command: /bin/true
+       when: ansible_os_family == "RedHat"
