@@ -1,0 +1,25 @@
+---
+- hosts: g1
+  sudo: yes
+  vars:
+   name: neha prasad
+   age: 26
+   project: 'CC Ops'
+  tasks:
+   - name: Include variable file
+     include_vars:
+             file: my_vars.yaml
+             name: myvar
+   - name: print values
+     debug: 
+       msg: "My name is {{ name }}. I am {{ age }} years old and I work in {{ project }} team, Also {{ myvar }}"
+   - name: install httpds
+     yum: name=httpd state=present 
+     when: ansible_os_family == "RedHat"   
+- hosts: g2
+  sudo: yes
+  tasks: 
+  - name: print values
+    debug:
+      msg: "Values {{ name }}"  
+...

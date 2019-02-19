@@ -1,0 +1,9 @@
+---
+# tasks file for webserver
+- name: Include Play1
+  include: role1.yaml
+- name: Include Play2
+  include: role2.yaml
+- name: Include Play3
+  include: role3.yaml
+...
