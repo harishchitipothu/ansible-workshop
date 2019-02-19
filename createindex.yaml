@@ -1,0 +1,6 @@
+---
+- hosts: web
+  sudo: yes
+  tasks:
+  - name: copy index.html
+    copy: dest=/var/www/html/index.html content='<html><head><title>Welcome to Ansible Class</title></head><body><h1>My name is {{ name }} and I am running on {{ ansible_hostname }}</h1></body></html>'
