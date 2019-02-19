@@ -1,0 +1,13 @@
+[web]
+10.108.61.7
+
+[web1]
+10.108.61.7
+
+[web:vars]
+ansible_user=root
+ansible_ssh_pass=citrix
+myname=name
+age=age
+role=devops
+newport=8080

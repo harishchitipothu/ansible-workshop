@@ -1,0 +1,10 @@
+---
+# vars file for webserver
+- hosts: web
+  sudo: yes
+  vars:
+    os: "RedHat"
+    name: "root1"
+    age: "aa"
+    role: "admin"
+    newport: "8080"

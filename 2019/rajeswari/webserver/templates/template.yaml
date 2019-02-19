@@ -1,0 +1,18 @@
+---
+- hosts: web
+  sudo: yes
+  vars:
+    newport: 8080
+  tasks:
+    - name: copy config file to js script
+       template:
+         src: template.js
+         dest: "/etc/httpd/conf/httpd.conf"
+  tasks:
+    - name: Ansible create file if it doesn't exist example
+      file:
+        path: "/opt/index.html"
+        state: touch
+
+  tasks:
+    - copy: content="<html><body><title>Welcome to Ansible Class</title></head><body> <h1> My name is {{myname }} and I am running on {{ansible_hostname}}. </h1></body></html>" dest=/opt/index.html
