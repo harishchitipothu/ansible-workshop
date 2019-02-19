@@ -1,0 +1,6 @@
+---
+- name: Including the yaml files
+  include: copyingTemplate.yaml
+- name: Including the yaml fo rApache
+  include: installingApache.yaml
+...
