@@ -1,0 +1,10 @@
+---
+ - hosts: local
+   sudo: yes
+ 
+#   vars:
+#     name: main file
+#     port: 8080
+
+   roles:
+      - webserver
