@@ -1,0 +1,4 @@
+- template:
+    src: /webserver/template/index.j2
+    dest: /opt/index.html
+  
