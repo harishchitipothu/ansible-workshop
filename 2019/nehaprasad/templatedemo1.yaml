@@ -1,0 +1,23 @@
+---
+- hosts: g1
+  sudo: yes
+  vars:
+    name: neha
+    port: 8090
+  tasks:
+  - name: Install Httpd
+    yum: name=httpd state=present
+  - name: Place contents in a HTML file
+    blockinfile: path=/var/www/html/index.html create=yes content='<html><title>Welcome to Ansible</title><body>My name is {{ name }} and I run {{ ansible_os_family }}</body>' 
+  #- name: Copy the httpd conf file to current directory
+   # copy:
+    # src: /etc/httpd/conf/httpd.conf
+     #dest: /home/nehakalathia/mytemplate.j2
+  - name: Start service
+    service: name=httpd state=restarted
+  - name: Copy template to httpd.conf with changed port number
+    template:
+      src: /home/nehakalathia/mytemplate.j2
+      dest: /etc/httpd/conf/httpd.conf
+... 
+ 
