@@ -1,0 +1,3 @@
+---
+# vars file for webserver
+myname: role_vars_main.yml
