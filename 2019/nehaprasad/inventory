@@ -1,0 +1,17 @@
+[local]
+localhost ansible_connection=local
+
+[g1]
+13.82.212.1 ansible_ssh_private_key_file=/home/nehakalathia/VM2priv.pem ansible_user=nehakalathia ansible_become=yes
+
+[g2]
+13.72.104.125 ansible_ssh_private_key_file=/home/nehakalathia/VM2priv.pem ansible_user=nehakalathia ansible_become=yes
+
+[common:children]
+g1
+g2
+
+[g1:vars]
+name=neha
+age=26
+project=CCOps

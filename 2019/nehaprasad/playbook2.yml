@@ -1,0 +1,26 @@
+---
+- hosts: common
+  sudo: yes
+  tasks:
+  - name: Create a group called deploy
+    group: name=deploy state=present
+  - name: Create a group called group
+    group: name=group state=present
+  - name: Create a user user-deploy and add him to group 
+    usr: name=user-deploy state=present group=group shell=/bin/bash
+  - name: Install package httpd
+    yum: name=httpd state=present
+  - name: Start service httpd
+    service: name=httpd state=started
+  - name: Add contents
+    blockinfile: path=/var/www/html/index.html create=yes content='<h1>Welcome to Ansible</h1>'
+  - name: Install git and wget
+    yum:
+     name: "{{ packages }}"
+    vars: 
+     packages:
+     - git
+     - wget
+  - name: Clone repo
+    git: repo=https://github.com/scmgalaxy/ansible-role-template dest=/home/nehakalathia/ansibleNKA/ansiblerepo1
+...
