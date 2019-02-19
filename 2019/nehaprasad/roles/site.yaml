@@ -1,0 +1,7 @@
+---
+- hosts: g1
+  sudo: yes
+  roles:
+    - webserver
+...
+ 
