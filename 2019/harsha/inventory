@@ -1,0 +1,13 @@
+localhost ansible_connection=local
+
+[g1]
+10.108.16.36 ansible_user=engineer ansible_ssh_pass=citrix ansible_become=yes ansible_become_method=sudo ansible_become_pass=citrix
+[g2]
+10.108.16.201 ansible_user=engineer ansible_ssh_private_key_file=/root/.ssh/id_rsa
+
+[common:children]
+g1
+g2
+
+[common:vars]
+name=inventory

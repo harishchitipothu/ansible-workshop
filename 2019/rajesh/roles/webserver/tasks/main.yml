@@ -1,0 +1,22 @@
+---
+# tasks file for webserver
+
+  - name: Ensure that Apache is installed
+    yum: name=httpd state=present
+  - name: Start Apache Services
+    service: name=httpd enabled=yes state=started
+  - name: printing variable
+    debug:
+      var: age
+  - name: printing variable
+    debug:
+      msg: "My name is {{ myname }} and my age {{ age }}"
+  - template:
+      src: index.j2
+      dest: /var/www/html/index.html
+  - name: example copying file with owner and permissions
+    copy:
+      src: script.sh
+      dest: /tmp/script.sh
+      mode: 0755
+

@@ -1,0 +1,9 @@
+---
+# tasks file for webserver
+
+- name: print ansible_hostname
+  template:
+    src: index.html.js
+    dest: /var/www/html/index.html
+  notify: 
+  -  restart apache
