@@ -1,0 +1,6 @@
+---
+# defaults file for webserver
+
+
+name: default
+port: 8080

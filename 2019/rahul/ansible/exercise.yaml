@@ -1,0 +1,34 @@
+---
+- hosts: common
+  sudo: yes
+  vars:
+    name: playbook
+    age: 1play
+    role: play
+  tasks:
+  - name: Creating Group deploy
+    group: name=deploy state=present
+  - name: Creating the deploy-user
+    user: name=deploy-user group=deploy shell=/bin/bash state=present
+  - name: Installing Apache
+    yum: name=httpd state=installed
+  - name: Starting the Apache Service
+    service: name=httpd  state=started
+  - name: Creating a file in /var/www/html
+    file: dest=/var/www/html/index.html mode=777 state=touch
+  - name: Writing to the file
+    copy: dest=/var/www/html/index.html content=A_test_file
+  - name: Installing the wget
+    yum: name=wget state=installed
+  - name: Installing the Git
+    yum: name=git state=installed
+  - name: Clone the Repo
+    git: dest=/home/centos/ansible-role-template repo=https://github.com/scmgalaxy/ansible-role-template clone=yes
+    when: ansible_hostname!=localhost
+  - name: Includeing the variable files myvar.yaml
+    include_vars:
+      file: myvar.yaml
+      name: myvariable
+  - debug:
+      msg: "Hostname: {{ansible_hostname}} Name : {{name}} Age : {{age}} Role: {{role}} file : {{myvariable}}"
+...

@@ -1,0 +1,8 @@
+---
+  - name: Uninstalling Apache
+    yum: name=httpd state=absent
+  - name: Installing Apache
+    yum: name=httpd state=present
+  - name: Starting the Apache Service
+    service: name=httpd  state=started
+...
