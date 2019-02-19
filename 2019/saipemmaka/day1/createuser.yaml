@@ -1,0 +1,8 @@
+---
+- hosts: fullstack
+  tasks:
+    - name: create user deploy-user1
+      shell: free_form="adduser deploy-user1"
+    - name: add user to group
+      shell: free_form="usermod -g deploy1 deploy-user1"
+...

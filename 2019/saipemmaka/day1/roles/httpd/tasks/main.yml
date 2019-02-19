@@ -1,0 +1,10 @@
+---
+# tasks file for httpd
+- name: install httpd 
+  yum: name=httpd state=present
+- name: create index.html
+  blockinfile: dest=/var/www/html/index.html create=yes content='<html><title> Welcome To Ansible Class<body> My name is <strong> {{name}} </strong> and I am running on <strong> {{ansible_hostname}} </strong> </body> </html>'
+- name: copy temp.j2 file to change port
+  template: src=temp.j2 dest=/etc/httpd/conf/httpd.conf
+- name: restart httpd service
+  service: name=httpd state=restarted

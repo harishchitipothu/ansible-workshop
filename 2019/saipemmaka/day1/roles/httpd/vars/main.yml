@@ -1,0 +1,6 @@
+---
+# vars file for httpd
+name: user01
+age: 01
+role: user01
+port: 8080
