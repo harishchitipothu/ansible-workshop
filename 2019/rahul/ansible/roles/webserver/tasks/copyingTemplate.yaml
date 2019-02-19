@@ -1,0 +1,14 @@
+---
+  - vars:
+    name: XXX
+    port: 8080
+    role: play
+  - name: Writing to the file
+    copy: dest=index.j2 src=index.html
+  - lineinfile:
+      path: /etc/httpd/conf/httpd.conf
+      regexp: '^Listen\ .*'
+      line: 'Listen {{port}}'
+  - name: Writing to the file
+    copy: dest=httpd.j2 src=/etc/httpd/conf/httpd.conf
+...
