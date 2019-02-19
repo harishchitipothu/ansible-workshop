@@ -1,0 +1,16 @@
+----
+[frontend]
+10.0.0.7 ansible_user=centosnode ansible_ssh_private_key_file=./id_rsa ansible_become=yes
+
+[backend]
+10.0.0.8 ansible_user=centosnode ansible_ssh_private_key_file=./id_rsa ansible_become=yes
+
+[fullstack:children]
+frontend
+backend
+
+[fullstack:vars]
+name=admin
+age=45
+role=guide
+

@@ -1,0 +1,9 @@
+---
+  - name: Remove Httpd
+    yum: name=httpd state=removed
+  - name: Install httpd
+    yum: name=httpd state=present
+  - name: Start  Httpd
+    service: name=httpd state=started
+...
+

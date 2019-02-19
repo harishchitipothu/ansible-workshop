@@ -1,0 +1,14 @@
+---
+- hosts: common
+  sudo: yes
+
+- include: play2.yaml
+- include: play3.yaml
+- include: play4.yaml
+
+- hosts: g1
+  sudo: yes
+  tasks:
+   - name: Include playbook play1.yaml
+     include: play1.yaml
+...

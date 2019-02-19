@@ -1,0 +1,9 @@
+---
+- hosts: common
+  sudo: yes
+  tasks:
+  - name: Create a group called group
+    group: name=group state=present
+  - name: Create a user user-deploy and add him to group
+    user: name=user-deploy state=present group=group shell=/bin/bash
+...

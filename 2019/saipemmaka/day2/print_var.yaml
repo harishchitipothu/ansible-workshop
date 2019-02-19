@@ -1,0 +1,13 @@
+---
+- hosts: fullstack
+  vars:
+   name: playbook_user
+   age: 11
+   role: instant
+  tasks:
+    - name: include vars from myVar.yaml into stuff
+      include_vars:
+        file: myVar.yaml
+       # name: age
+    - name: print inventory variables
+      debug: msg="{{name}} is  {{age}} years old who is acting as {{role}}."

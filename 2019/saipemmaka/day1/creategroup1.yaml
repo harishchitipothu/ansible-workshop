@@ -1,0 +1,6 @@
+---
+- name: create a new group
+  shell: free_form="groupadd deploy1"
+- name: display text
+  debug: msg="Imported playbook as a task"
+...

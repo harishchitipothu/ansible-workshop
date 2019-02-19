@@ -1,0 +1,11 @@
+localhost ansible_connection=local
+
+
+[web]
+10.0.1.5 ansible_ssh_pass=test123 ansible_user=root 
+10.0.1.8 ansible_ssh_pass=test123 ansible_user=root
+
+[web:vars]
+name=nabarun
+age=5
+role=devops

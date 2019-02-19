@@ -1,0 +1,6 @@
+---
+- hosts: fullstack
+  roles:
+    - httpd
+
+

@@ -1,0 +1,6 @@
+- hosts: common
+  sudo: yes
+  tasks:
+  - name: Start service httpd
+    service: name=httpd state=started
+...
