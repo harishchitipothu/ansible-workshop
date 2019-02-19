@@ -1,0 +1,16 @@
+#Content of more myvar.yaml
+#---
+#age: 30
+---
+- name: Reading variables from var files
+  hosts: localhost
+  connection: local
+  vars_files:
+    - myvar.yaml
+  tasks:
+    - name: Display all variables/facts known for a host
+      debug: var=hostvars[inventory_hostname]
+    - debug: var=age
+    - name: Print version
+      debug:
+        msg: "Ansible Version: {{ age }}"
