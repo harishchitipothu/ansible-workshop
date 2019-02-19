@@ -1,0 +1,8 @@
+---
+- hosts: fullstack
+  vars:   
+    name: webserver
+  tasks:
+    - name: create index.html
+      blockinfile: dest=/var/www/html/index.html create=yes content='<html><title> Welcome To Ansible Class<body> My name is <strong> {{name}} </strong> and I am running on <strong> {{ansible_hostname}} </strong> </body> </html>'
+...

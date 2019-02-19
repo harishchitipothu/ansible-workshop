@@ -1,0 +1,8 @@
+---
+- hosts: fullstack
+  tasks:
+    - name: install git
+      yum: pkg=git state=present
+    - name: install wget
+      yum: pkg=wget state=present
+...

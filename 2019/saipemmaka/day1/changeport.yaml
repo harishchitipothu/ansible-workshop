@@ -1,0 +1,17 @@
+---
+- hosts: fullstack
+  vars:
+    name: webserver
+    port: 8080
+  tasks:
+    - name: install httpd
+      yum: pkg=httpd state=present
+    - name: start httpd
+      service: name=httpd state=started
+    - name: create index.html
+      blockinfile: dest=/var/www/html/index.html create=yes content='<html><title> Welcome To Ansible Class<body> My name is <strong> {{name}} </strong> and I am running on <strong> {{ansible_hostname}} </strong> </body> </html>'     
+    - name: copy temp.j2 file to src to change port
+      template: src=temp.j2 dest=/etc/httpd/conf/httpd.conf
+    - name: restart httpd 
+      service: name=httpd state=restarted
+  

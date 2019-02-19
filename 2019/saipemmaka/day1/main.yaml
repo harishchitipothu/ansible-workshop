@@ -1,0 +1,8 @@
+---
+- hosts: fullstack
+  tasks:
+   - name: create a group
+     include: creategroup1.yaml
+- include: createuser.yaml
+- include: installhttpd.yaml
+- include: starthttpd.yaml
