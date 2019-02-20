@@ -1,0 +1,25 @@
+
+[hosts1]
+linhost.westus.cloudapp.azure.com ansible_user=ansible ansible_ssh_private_key_file=access.pem
+
+[hosts2]
+linhost2.westus.cloudapp.azure.com ansible_user=ansible ansible_ssh_private_key_file=access.pem
+
+[hosts3]
+127.0.0.1 ansible_connection=local
+
+[private]
+172.16.21.5 
+172.16.21.5
+
+
+
+[common:children]
+hosts1
+hosts2
+hosts3
+
+[common:vars]
+name= "Divyanshu"
+age= 22
+role_of_project= " This is an assignment "

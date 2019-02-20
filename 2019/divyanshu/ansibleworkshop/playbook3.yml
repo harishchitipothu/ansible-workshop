@@ -1,0 +1,17 @@
+---
+- hosts: common
+  sudo: yes
+  gather_facts: yes 
+  vars :
+   name: "Prakhar"
+   age: 24
+   role_of_project : "nothing"
+  vars_files :
+    - "external_vars.yml"
+
+  tasks :
+    - name: printing vars
+      debug:
+        msg: "My name {{name}} , my age {{age}} and role of project {{role_of_project}}"
+
+...

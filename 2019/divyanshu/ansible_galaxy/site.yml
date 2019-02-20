@@ -1,0 +1,8 @@
+- hosts: common 
+  gather_facts : yes
+  sudo : yes 
+  vars :
+    name : Playbook
+    age : 99
+  roles :
+   - webserver

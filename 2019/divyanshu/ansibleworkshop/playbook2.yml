@@ -1,0 +1,20 @@
+---
+- hosts: common
+  sudo: yes
+  gather_facts: yes 
+  vars :
+   name: "Prakhar"
+   age: 24
+   role_of_project : "nothing"
+
+  tasks:
+    - name: printing vars
+      debug:
+         msg: "My name {{name}} , my age {{age}} and role of project {{role_of_project}}"
+
+    - name: installing httpds if red hat 
+      yum: name="httpd" state="latest"
+      when : ansible_facts['os_family'] == "RedHat"
+
+
+...
