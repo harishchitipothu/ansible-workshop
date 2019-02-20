@@ -1,0 +1,6 @@
+---
+- hosts: fullstack
+  tasks:
+    - name: create a new group
+      shell: free_form="groupadd deploy1" 
+...

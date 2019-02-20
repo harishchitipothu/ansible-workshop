@@ -1,0 +1,11 @@
+---
+- hosts: common
+  sudo: yes
+
+  tasks:
+  - name: Installing the Apache
+    yum: name=httpd state=present
+  - name: Starting the Apache http service	
+    service: name=httpd state=started
+...
+

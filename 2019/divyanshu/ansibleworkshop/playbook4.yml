@@ -1,0 +1,36 @@
+---
+- hosts: common
+  sudo: yes
+  vars :
+    port : 8080
+
+  tasks:
+  - name: Ensure that Apache is installed RedHat
+    yum: name=httpd state=latest
+    when : ansible_facts['os_family'] == "RedHat"
+  - name: Start Apache Services RedHat
+    service: name=httpd enabled=yes state=started
+    when: ansible_facts['os_family'] == "RedHat"
+  - name: Ensure that Apache is installed Debian
+    apt: name=apache2 state=latest
+    when : ansible_facts['os_family'] == "Debian"
+  - name: Start Apache Services Debian
+    service: name=apache2 enabled=yes state=started
+    when: ansible_facts['os_family'] == "Debian"
+  - name: Dummy html copy RedHat
+    copy : dest=/etc/httpd/index.html content='<html><body><title>Welcome to Ansible Class</title></head><body> <h1> My name is {{name }} and I am running on {{ansible_hostname}} </h1></body></html>'
+    when: ansible_facts['os_family'] == "RedHat"
+  - name: Dummy html copy Debian
+    copy : dest=/etc/apache2/index.html  content='<html><body><title>Welcome to Ansible Class</title></head><body> <h1> My name is {{name }} and I am running on {{ansible_hostname}} </h1></body></html>'
+    when : ansible_facts['os_family'] == "Debian"
+  - name : Interpolating template file Debian
+    template : src=template.j2 dest=/etc/apache2/apache2.conf
+    when: ansible_facts['os_family'] == "Debian"
+  - name : Interpolating template file RedHat
+    template : src=template.j2 dest=/etc/httpd/conf/httpd.conf
+    when: ansible_facts['os_family'] == "RedHat"
+
+
+
+
+...

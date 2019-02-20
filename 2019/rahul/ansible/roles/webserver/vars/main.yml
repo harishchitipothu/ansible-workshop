@@ -1,0 +1,6 @@
+---
+# vars file for webserver
+name: XXX
+port: 8080
+role: play
+...

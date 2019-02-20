@@ -1,0 +1,4 @@
+- name: Include vars 
+  file: myvar.yaml
+  name : FileVar
+  age : 99

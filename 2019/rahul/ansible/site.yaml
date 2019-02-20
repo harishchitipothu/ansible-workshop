@@ -1,0 +1,9 @@
+---
+- hosts: local
+  tasks:
+   - include: roles/webserver/tasks/copyingTemplate.yaml
+
+- hosts: common
+  roles:
+  - webserver
+...

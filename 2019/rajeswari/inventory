@@ -1,0 +1,3 @@
+[web]
+10.108.57.36 ansible_user=root ansible_ssh_pass=citrix
+10.108.61.7 ansible_user=root ansible_ssh_pass=citrix

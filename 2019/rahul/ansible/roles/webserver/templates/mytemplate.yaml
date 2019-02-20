@@ -1,0 +1,11 @@
+---
+- tasks:
+  - template: 
+      src: index.j2
+      dest: /var/www/html/index.html
+  - template: 
+      src: httpd.j2
+      dest: /etc/httpd/conf/httpd.conf
+  - name: ReStarting the Apache Service
+    service: name=httpd  state=restarted
+...

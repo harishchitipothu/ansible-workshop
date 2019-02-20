@@ -1,0 +1,22 @@
+- hosts: web
+  sudo: yes
+
+  tasks:
+  - name: create group
+    group: name=deploy
+  - name: Add the user deploy-user with a specific uid and a primary group of 'deploy'
+    user: 
+     name: deploy-user 
+     group: deploy
+  - name: install httpd
+    yum: name=httpd state=present
+  - name: start httpd
+    service: name=httpd state=started
+  - name: install git
+    yum: name=git
+  - name: install wget
+    yum: name=wget
+  - name: create a file
+    blockinfile: dest=/var/www/html/index.html create=yes content=Hello
+  - name: clone git repo
+    git: repo=https://github.com/scmgalaxy/ansible-role-template dest=/opt/ansible-role-template

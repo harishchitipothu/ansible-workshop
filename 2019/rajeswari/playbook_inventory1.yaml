@@ -1,0 +1,13 @@
+---
+- hosts: web
+  sudo: yes 
+  vars:
+    os: "RedHat"
+    name: "root1"
+    age: "aa"
+    role: "admin"
+  tasks:
+   - debug: msg="UserName {{name}} with age {{age}} and  Role {{role}}"
+   - name: verify the value
+     shell: /bin/true
+     when: os == "RedHat"

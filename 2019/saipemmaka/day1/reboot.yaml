@@ -1,0 +1,6 @@
+---
+- hosts: fullstack
+  tasks:
+    - name: reboot machine
+      reboot:
+...

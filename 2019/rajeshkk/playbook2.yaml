@@ -1,0 +1,13 @@
+- hosts: web
+  sudo: yes
+  vars:
+   OS: "redhat"
+   name: "rajesh1"
+   age: "33"
+   role: "devops1"
+
+  tasks:
+   - debug:
+       msg: "name:{{name}}and {{age}}"
+
+    

@@ -1,0 +1,13 @@
+[web]
+cent2.westindia.cloudapp.azure.com ansible_user=prakhar ansible_ssh_pass_file=********
+
+[database]
+cent3.westindia.cloudapp.azure.com ansible_user=prakhar ansible_ssh_pass=********
+
+[local]
+127.0.0.1 ansible_connection=local
+
+[group:children]
+web
+database
+

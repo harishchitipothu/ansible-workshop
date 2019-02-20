@@ -1,0 +1,20 @@
+---
+# tasks file for webserver
+
+ - name: create file with content
+   file: path=/var/www/html/index.html state=touch
+
+ - name: write content
+   copy: dest=/var/www/html/index.html content='<html><body><title>Welcome to Ansible Class</title></head><body> <h1> My name is {{ name }} and I am running on ansible_facts. </h1></body></html>'
+
+ - name: copy content from httpd.conf
+   template: src=./template.j2 dest=/etc/httpd/conf/httpd.conf
+
+ - name: start httpd server
+   service: name=httpd state=restarted
+ 
+ - name: copy shell script
+   copy: src=script.sh dest=/home/prakhar
+
+ - name: Execute the script
+   command: sh /home/prakhar/script.sh  

@@ -1,0 +1,39 @@
+---
+- hosts: local
+  sudo: yes
+  vars:
+    name: Alpha
+    port: 8080
+    role: play
+
+  tasks:  
+  - name: Writing to the file
+    copy: dest=index.j2 src=index.html
+  - lineinfile:
+      path: /etc/httpd/conf/httpd.conf
+      regexp: '^Listen\ .*'
+      line: 'Listen {{port}}'
+  - name: Writing to the file
+    copy: dest=/opt/httpd.j2 src=/etc/httpd/conf/httpd.conf
+
+- hosts: common
+  sudo: yes
+  vars:
+    name: Rahul
+
+  tasks:
+  - name: Uninstalling Apache
+    yum: name=httpd state=absent
+  - name: Installing Apache
+    yum: name=httpd state=present
+  - name: Starting the Apache Service
+    service: name=httpd  state=started
+  - template: 
+      src: index.j2
+      dest: /var/www/html/index.html
+  - template: 
+      src: httpd.j2
+      dest: /etc/httpd/conf/httpd.conf
+  - name: ReStarting the Apache Service
+    service: name=httpd  state=restarted
+...

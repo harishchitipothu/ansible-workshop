@@ -1,0 +1,17 @@
+---
+- hosts: web
+  sudo: yes
+  vars:
+   newport: "8080" 
+  tasks:
+   - name: copy config file to js script
+     template: 
+       src: template.js 
+       dest: "/etc/httpd/conf/httpd.conf"
+  
+  tasks: 
+   -replace:
+     path: template.js
+     regexp: '^Listen 80'
+     replace: 'Listen {{newport}}'
+     backup: yes
