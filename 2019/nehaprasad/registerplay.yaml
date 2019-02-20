@@ -1,0 +1,13 @@
+---
+- hosts: g1
+  remote_user: root
+  tasks:
+   - name: Register variable
+     shell: "find *.txt"
+     args:
+       chdir: /sample
+     register: find_output
+
+   - debug:
+       var: find_output
+...

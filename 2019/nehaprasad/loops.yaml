@@ -1,0 +1,19 @@
+---
+- hosts: g1
+  sudo: yes
+  vars:
+   listvar:
+    - 'a'
+    - 'b'
+    - 'c'
+  tasks:
+    - shell: echo "nested test a={{ item[0] }} b={{ item[1] }} c={{ item[2] }}"
+      with_nested:
+        - [ 'red', 'blue', 'green' ]
+        - [ 1, 2, 3 ]
+        - [ 'up', 'down', 'strange']
+    - shell: echo "2 nested test list = {{ item[0] }} var = {{ item[1] }}"
+      with_nested:
+        - listvar
+        - [ 'neh', 'hari', 'advi' ]
+...
